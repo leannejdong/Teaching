@@ -19,3 +19,31 @@ linux kernel C interacts with hardware through abstraction layers provided by th
 The main distinction between embedded C and Linux Kernel C lies in the context and level of abstraction they operate at. 
 Embedded C concerns with developing software for resource-constrained embedded systems, while kernel C focus on implementation of kernel-level 
 functionality within the linux operating system.
+
+2. Can you set pointer to null? Reference to null?
+
+In C++, references cannot be set to null. Once a reference is declared and initialized, it must always refer to an object. Attempting to set a reference to null or reassign it to another object is not allowed and will result in a compilation error.
+
+On the other hand, pointers can be reassigned. After declaring a pointer, you can change its value to point to a different memory location by assigning it a new address or the value nullptr.
+
+```cpp
+ // ptr can be set null
+    int *a = new int(5);
+    a = nullptr;
+
+    int value = 3;
+    // ref cannot be set null
+    int &ref = value;
+    ref = nullptr;
+
+    // Can you re-assign pointer? Yes
+    int value1 = 5;
+    int value2 = 10;
+
+    int* ptr = &value1;   // Pointer 'ptr' is initially assigned the address of 'value1'
+    ptr = &value2;        // Pointer 'ptr' is reassigned to the address of 'value2'
+    // Can you re-assign ref? No
+    int& ref = value1;    // Reference 'ref' is bound to 'value1'
+    // ref = value2;      // Error: References cannot be reassigned to refer to a different object
+}
+```
